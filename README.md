@@ -25,11 +25,30 @@ Pix2Pix는 cGAN 구조를 갖는다, 이미지 조건을 입력받아 이미지�
 
 4. 생성자
 - 생성자를 통해 Down 샘플링을 진행 : 8번의 convolution layer를 거친 후  512x1x1의 출력 값을 형성한다.
-- 생성자를 통해 Up 샘플링을 진행 : 이 부분을 디코더라고 볼 수 있다. Skip Connection을 사용하기 때문에, 출력 채널의 크기 x 2가 다음 입력 채널의 크기가 된다.
-![스크린샷 2023-12-20 오전 7 31 56](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/1636d25e-6333-4bbd-9cfe-142e703bbf2e)
+- 생성자를 통해 Up 샘플링을 진행 : 이 부분을 디코더라고 볼 수 있다. Skip Connection을 사용하기 때문에, 출력 채널의 크기 x 2가 다음 입력 채널의 크기가 된다.
+![생성자](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/f6719bb5-bb2d-4f80-a118-2340c3f6e13c)
+
+4-1. 생성자2
+![생성자2](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/36fed8c2-3082-4cf1-991d-5b214502d9d0)
+- d8: 512 X 1 X 1 즉 인코더 디코더 중앙의 블럭 출력값
+- d7: 중앙 전 인코딩 마지막 출력값
+- u1의 매개변수: d8은 Up 샘플링 one 블럭을 거쳐서처리가 되고, d7이 그대로 채널 레벨로 연결되어 u1에 담긴다.
+- 결과적으로 디코딩까지 수행 후 final블럭을 거쳐 3 X 256 X 256의 입력이미지와 동일한 차원의 출력 이미지를 만든다.
+
+5. 판별자
+- 특정 이미지가 진짜인지, 가짜인지 판별하기 위한 용도이다.
+- 너비와 높이가 2배씩 감소하면서 채널값은 커지는 형태로 일반적인 convolution 연산을 수행한다.
+- 다만, conditional Gan이기에 입력 조건(x) 이미지와 정답 이미지(y)가 같이 들어와야한다.
+- 조건 이미지와 실제/변환 이미지 두 개를 입력 받으므로 채널 크기도 2배(rgb(3) *2 = 6)
+- 결과적으로 채널 값은 커지면서 너비와 높이는 감소한 feature를 뽑은 후 출력 값을 내보낸다.
+![판별자](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/8e8188e5-a34d-412e-98a9-9dcec806df40)
 
 
 
 
 
+
+
+
+  
 
