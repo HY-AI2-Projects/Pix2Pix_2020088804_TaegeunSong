@@ -46,9 +46,13 @@ Pix2Pix는 cGAN 구조를 갖는다, 이미지 조건을 입력받아 이미지�
 ![판별자](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/8e8188e5-a34d-412e-98a9-9dcec806df40)
 
 
-
-
-
+6. 모델학습 및 샘플링
+- 생성자, 판별자 모델을 초기화 후 적절한 하이퍼 파라메터 설정, 적절한 손실 함수를 이용한다. 
+#논문에선 L1 loss를 이용해 더 좋은 결과를 얻을 수 있다고 주장한다.
+![모델학습 및 샘플링1](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/f6d343f6-2b0b-4e29-82a4-73085ede550b)
+- conv layer / batch normalization layer 를 적절한 파라메터 값으로 초기화
+- 생성자/판별자/가중치/손실함수 초기화
+- 손실함수는 conditional Gan을 위해 MSELoss사용, 실제 ground truth와 비슷해지기 위해 L1Loss 사용
 
 
 
