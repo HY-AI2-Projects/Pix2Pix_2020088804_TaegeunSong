@@ -54,7 +54,34 @@ Pix2Pix는 cGAN 구조를 갖는다, 이미지 조건을 입력받아 이미지�
 - 생성자/판별자/가중치/손실함수 초기화
 - 손실함수는 conditional Gan을 위해 MSELoss사용, 실제 ground truth와 비슷해지기 위해 L1Loss 사용
 
+7. 실행
+- 학습횟수 20번, 배치 200번 마다 결과 출력(이미지 파일 형태로 관리)
+- A를 B로 바꿔주는 즉, 그림을 사진으로 바꿔주는 task 수행
+![테스트1](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/0a00d812-28b4-4cab-938e-60fc32eacb14)
+
+# 생성자
+- real_A를 사진 이미지로 생성하여 fake_B에 넣는다.
+- loss_GAN(생성자 손실 값 계산) = discriminator에 생성된 이미지(fake_B)와 조건이미지(real_A)를 넣었을 때 진짜 이미지라고 분류될 수 있도록 학습한다.
+- loss_pixel(픽셀 단위 L1 손실 값 계산) = 만들어진 결과가 실제 사진 이미지와 유사해질 수 있도록 L1Loss를 이용하여 학습을 진행한다.
+- loss_G(최종적인 손실) = loss_GAN + loss_pixel * lambda_pixel
+- 이후 생성자를 업데이트
+![생성자 학습](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/125279e8-b803-40c7-940f-27cf05f98956)
 
 
-  
+# 판별자
+- 실제 이미지를 실제라고 학습시키고, 가짜는 가짜로 분류하도록 학습시킨다.
+![판별자 학습](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/0022d748-319e-4342-902d-cdd565af186a)
+- 특정 인터벌 마다 만들어진 이미지에 대해 이미지 파일로 내보내어 저장하도록 한다.
+- 한번 학습이 끝날 때 마다 loss 등 정보를 출력한다.
+
+# 결과확인
+1. D loss: 판별자 손실
+2. G pixel loss: 생성자 픽셀 손실
+3. adv loss: 생성자의 적대적 손실
+![결과1](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/eb69effa-93f9-40a6-b6e2-15e9eec56eb4)
+- 결과적으로 낮은 학습 횟수에도 불구하고 D loss값은 현저히 줄어듦
+- G pixel loss값은 큰 변동이 없음
+- adv loss값은 오히려 증가한 것으로 보여짐.
+![결과 이미지](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/9fc70946-43d6-4c29-af70-5a8f088f04d0)
+
 
