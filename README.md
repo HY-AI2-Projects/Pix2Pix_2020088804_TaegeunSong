@@ -28,6 +28,7 @@ Pix2Pix는 cGAN 구조를 갖는다, 이미지 조건을 입력받아 이미지�
 - 생성자를 통해 Up 샘플링을 진행 : 이 부분을 디코더라고 볼 수 있다. Skip Connection을 사용하기 때문에, 출력 채널의 크기 x 2가 다음 입력 채널의 크기가 된다.
 ![생성자](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/f6719bb5-bb2d-4f80-a118-2340c3f6e13c)
 
+
 4-1. 생성자2
 ![생성자2](https://github.com/HY-AI2-Projects/Pix2Pix_2020088804_TaegeunSong/assets/110830754/36fed8c2-3082-4cf1-991d-5b214502d9d0)
 - d8: 512 X 1 X 1 즉 인코더 디코더 중앙의 블럭 출력값
