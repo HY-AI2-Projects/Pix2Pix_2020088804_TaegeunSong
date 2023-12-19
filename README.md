@@ -1,7 +1,7 @@
 
 # Pix2Pix_2020088804_TaegeunSong
-참고논문 : https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf
-corab 주소 : https://colab.research.google.com/drive/1KMHvPEmUlwhm194YCw5vpvz3Zsp0e-8i#scrollTo=AK8ivlWgcxlF&line=1&uniqifier=1
+- 참고논문 : https://openaccess.thecvf.com/content_cvpr_2017/papers/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.pdf
+- corab 주소 : https://colab.research.google.com/drive/1KMHvPEmUlwhm194YCw5vpvz3Zsp0e-8i#scrollTo=AK8ivlWgcxlF&line=1&uniqifier=1
 
 
 Pix2Pix는 cGAN 구조를 갖는다, 이미지 조건을 입력받아 이미지를 출력. 입출력 차원이 동일한 아키텍처로 U-Net을 사용한다.
